@@ -1,0 +1,30 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class DevineLeNombre {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in); // Créer un objet Scanner pour lire les entrées de l'utilisateur
+        Random rand = new Random(); // Créer un objet Random pour générer des nombres aléatoires
+
+        int nombreAleatoire = rand.nextInt(100) + 1; // Génère un nombre aléatoire entre 1 et 100
+        int nombreDeTentatives = 0; // Compteur pour le nombre de tentatives de l'utilisateur
+        int devine = 0; // Variable pour stocker la devinette de l'utilisateur
+
+        // Boucle jusqu'à ce que l'utilisateur devine le nombre
+        while (devine != nombreAleatoire) {
+            System.out.print("Devine le nombre (1 à 100): ");
+            devine = sc.nextInt();
+            nombreDeTentatives++;
+
+            // Vérifie si la devinette est trop petite ou trop grande
+            if (devine < nombreAleatoire) {
+                System.out.println("Le nombre est plus grand!");
+            } else if (devine > nombreAleatoire) {
+                System.out.println("Le nombre est plus petit!");
+            }
+        }
+
+        // Affiche un message de félicitations une fois que l'utilisateur a deviné le nombre
+        System.out.println("Félicitations! Tu as deviné le nombre en " + nombreDeTentatives + " tentatives.");
+    }
+}
